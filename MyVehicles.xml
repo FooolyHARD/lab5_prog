@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehicles>
+    <myveh1>
+        <name>avtobus</name>
+        <coordinates>100 100</coordinates>
+        <enginePower>30</enginePower>
+        <VehicleType>CAR</VehicleType>
+        <FuelType>ALCOHOL</FuelType>
+    </myveh1>
+    <myveh2>
+        <name>samolet</name>
+        <coordinates>120 200</coordinates>
+        <enginePower>3000</enginePower>
+        <VehicleType>PLANE</VehicleType>
+        <FuelType>MANPOWER</FuelType>
+    </myveh2>
+	<myveh3>
+		<name>traktar</name>
+		<coordinates>200 300</coordinates>
+		<enginePower>400</enginePower>
+		<VehicleType>CAR</VehicleType>
+		<FuelType>KEROSINE</FuelType>
+	</myveh3>
+</vehicles>
