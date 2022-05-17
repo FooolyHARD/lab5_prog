@@ -91,7 +91,7 @@ public class WriteXmlDomParser {
             StreamResult streamResult = new StreamResult(new File(FILENAME));
             transformer.transform(dom, streamResult);
         } catch (ParserConfigurationException | TransformerException e) {
-            System.out.println("Жалко пиздец: ");
+            System.out.println("Unexpected exception ");
             e.printStackTrace();
         }
     }
