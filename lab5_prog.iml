@@ -17,5 +17,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javax.el-3.0.1-b10" level="project" />
+    <orderEntry type="library" name="validation-api-2.0.1.Final" level="project" />
+    <orderEntry type="library" name="hibernate-validator-6.0.10.Final" level="project" />
+    <orderEntry type="library" name="jaxb-api-2.4.0-b180830.0359" level="project" />
   </component>
 </module>

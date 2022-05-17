@@ -1,26 +1,28 @@
 package com.utils;
 
 import com.IO.ConsoleManager;
-import com.parseXML.DomExample;
-import com.sourcefiles.Vehicle;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
+import com.sourcefiles.Vehicle;
+import sun.awt.image.ImageWatched;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class FileManager {
+
     private final String fileName;
 
     public FileManager(String fileName) {
         this.fileName = fileName;
     }
 
-    public void writeCollection(LinkedList<Vehicle> VehicleCollection) {
+    public void writeCollection(LinkedList<Vehicle> vehicleCollection) {
         try {
             if (fileName != null) {
                 File file = new File(fileName);
@@ -28,42 +30,37 @@ public class FileManager {
                     throw new IOException();
 
                 OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
-                String result = null; //TODO: СПРОСИ У ИЛЬДАРА ЧТО ТУТ
-                writer.write(result);
-                writer.flush();
+                JAXBContext context = JAXBContext.newInstance(Vehicle.class);
+                Marshaller mr = context.createMarshaller();
+
+                mr.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+                for (Vehicle v: vehicleCollection){
+                    mr.marshal(v, writer);
+                    writer.flush();
+                }
                 writer.close();
             }
-        } catch (IOException e) {
+        } catch (IOException | JAXBException e) {
             ConsoleManager.printErr("No access to file");
             System.exit(0);
         }
 
     }
 
-    /**
-     * Reads collection from a file.
-     *
-     * @return Readed collection.
-     */
     public LinkedList<Vehicle> readCollection() {
         try {
             if (fileName != null) {
                 File file = new File(fileName);
                 if (!file.canRead() || !file.canWrite())
                     throw new IOException();
-                InputStreamReader reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
-                reader.close();
-                LinkedList<Vehicle> convertedCollection = DomExample.startparse(fileName);
-                if (convertedCollection == null)
-                    convertedCollection = new LinkedList<>();
-                else
-                    MyValidator.validateClass(convertedCollection);
+                JAXBContext context = JAXBContext.newInstance(Vehicle.class);
+                Unmarshaller um = context.createUnmarshaller();
 
-                return convertedCollection;
             }
-        } catch (IOException e) {
-            ConsoleManager.printErr("Нет доступа к файлу!");
-            System.exit(0);
+        } catch (IOException | JAXBException e) {
+            ConsoleManager.printErr("No access to file");
+            System.out.println(e);
+            //System.exit(0);
         }
         return new LinkedList<>();
     }

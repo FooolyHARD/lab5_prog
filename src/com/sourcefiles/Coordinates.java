@@ -1,7 +1,9 @@
 package com.sourcefiles;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
-
 public class Coordinates {
     private double x; //Максимальное значение поля: 829, Поле не может быть null
     private int y; //Значение поля должно быть больше -671

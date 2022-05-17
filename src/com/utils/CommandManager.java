@@ -17,10 +17,11 @@ public class CommandManager {
     private final Command exitCommand;
     private final Command addIfminCommand;
     private final Command addIfmaxCommand;
+    private final Command historyCommand;
     //TODO: Full cmd
 
 
-    public CommandManager(Command helpCommand, Command infoCommand, Command showCommand, Command addCommand, Command updateByIdCommand, Command removeByIdCommand, Command clearCommand, Command saveCommand, Command executeByScriptCommand, Command exitCommand, Command addIfminCommand, Command addIfmaxCommand){
+    public CommandManager(Command helpCommand, Command infoCommand, Command showCommand, Command addCommand, Command updateByIdCommand, Command removeByIdCommand, Command clearCommand, Command saveCommand, Command executeByScriptCommand, Command exitCommand, Command addIfminCommand, Command addIfmaxCommand, Command historyCommand){
         this.helpCommand = helpCommand;
         this.infoCommand = infoCommand;
         this.showCommand = showCommand;
@@ -33,6 +34,7 @@ public class CommandManager {
         this.exitCommand = exitCommand;
         this.addIfminCommand = addIfminCommand;
         this.addIfmaxCommand = addIfmaxCommand;
+        this.historyCommand = historyCommand;
         //TODO: FUll cmd
 
         commands.add(helpCommand);
@@ -48,6 +50,7 @@ public class CommandManager {
         commands.add(exitCommand);
         commands.add(addIfminCommand);
         commands.add(addIfmaxCommand);
+        commands.add(historyCommand);
     }
     public List<Command> getCmd(){
         return commands;
@@ -85,9 +88,11 @@ public class CommandManager {
     }
     public boolean addIfMin(String argument) {
         return addIfminCommand.execute(argument);
-    }    public boolean addIfmax(String argument) {
+    }
+    public boolean addIfmax(String argument) {
         return addIfmaxCommand.execute(argument);
     }
+    public boolean history(String argument) {return historyCommand.execute(argument); }
     public boolean help(String argument) {
         if (helpCommand.execute(argument)) {
             for (Command command : commands) {

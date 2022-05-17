@@ -7,7 +7,9 @@ import com.sourcefiles.Vehicle;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class CollectionManager {
@@ -49,10 +51,6 @@ public class CollectionManager {
         return VehicleCollection.size();
     }
 
-    public Vehicle getFirst() {
-        if (VehicleCollection.isEmpty()) return null;
-        return VehicleCollection.getFirst();
-    }
 
     public Vehicle getLast() {
         if (VehicleCollection.isEmpty()) return null;
@@ -78,16 +76,9 @@ public class CollectionManager {
     }
 
 
-    public Vehicle getByValue(Vehicle personToFind) {
-        for (Vehicle person : VehicleCollection) {
-            if (person.equals(personToFind)) return person;
-        }
-        return null;
-    }
-
 
     public void addToCollection(Vehicle person) {
-        ArrayDeque<Vehicle> tmp = new ArrayDeque<>();
+        LinkedList<Vehicle> tmp = new LinkedList<>();
         while (!VehicleCollection.isEmpty() && VehicleCollection.getFirst().compareTo(person) < 0) {
             tmp.addLast(VehicleCollection.pollFirst());
         }
@@ -106,13 +97,6 @@ public class CollectionManager {
     }
 
 
-    public void removeLower(Vehicle personToRemove) {
-        LinkedList<Vehicle> tmp = new LinkedList<>();
-        while (!personToRemove.equals(VehicleCollection.getFirst())) {
-            tmp.addLast(VehicleCollection.pollFirst());
-        }
-    }
-
 
     public void saveCollection() {
         fileManager.writeCollection(VehicleCollection);
@@ -121,7 +105,7 @@ public class CollectionManager {
 
 
     private void loadCollection() {
-        VehicleCollection = fileManager.readCollection();
+       VehicleCollection = fileManager.readCollection();
         lastInitTime = LocalDateTime.now();
     }
 
@@ -138,12 +122,14 @@ public class CollectionManager {
 
     @Override
     public String toString() {
-        if (VehicleCollection.isEmpty()) return "Коллекция пуста!";
-
+        if (VehicleCollection.isEmpty()) return "Colletion is empty!";
         StringBuilder info = new StringBuilder();
+        System.out.println(VehicleCollection.get(0));
         for (Vehicle vehicle : VehicleCollection) {
-            info.append(vehicle);
-            if (vehicle != VehicleCollection.getLast()) info.append("\n\n");
+            info.append(vehicle.toString());
+            if (vehicle != VehicleCollection.getLast()) {
+                info.append("\n\n");
+            }
         }
         return info.toString();
     }

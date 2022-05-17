@@ -1,13 +1,14 @@
 package com.sourcefiles;
 
 import javax.validation.constraints.*;
+import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
 public class Vehicle implements Comparable<Vehicle>{
     @NotNull
     @Positive(message = "ID должен быть больше 0")
+
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @NotNull
     @NotBlank (message = "Имя не может быть пустым")
@@ -33,7 +34,7 @@ public class Vehicle implements Comparable<Vehicle>{
     public Long getId() {
         return id;
     }
-
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -41,33 +42,36 @@ public class Vehicle implements Comparable<Vehicle>{
     public String getName() {
         return name;
     }
-    public String setStr(float num){
-        return String.valueOf(num);
-    }
+
+
     public void setName(String name) {
         this.name = name;
     }
     public float getEnginePower() {
         return enginePower;
     }
+
     public void setEnginePower(float enginePower) {
         this.enginePower = enginePower;
     }
     public FuelType getFuelType() {
         return fuelType;
     }
+
     public void setFuelType(FuelType fuelType) {
         this.fuelType = fuelType;
     }
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
+
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
     public VehicleType getType() {
         return type;
     }
+
     public void setType(VehicleType type) {
         this.type = type;
     }
@@ -75,7 +79,6 @@ public class Vehicle implements Comparable<Vehicle>{
     public Coordinates getCoordinates() {
         return coordinates;
     }
-
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }

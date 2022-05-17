@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vehicles>
-    <myveh1>
+    <myveh>
+        <id>1</id>
         <name>avtobus</name>
-        <coordinates>100 100</coordinates>
+        <coordinates>
+            <coordinateX>100</coordinateX>
+            <coordinateY>100</coordinateY>
+        </coordinates>
+        <creationDate>2022-05-02</creationDate>
         <enginePower>30</enginePower>
         <VehicleType>CAR</VehicleType>
         <FuelType>ALCOHOL</FuelType>
-    </myveh1>
-    <myveh2>
+    </myveh>
+    <myveh>
         <name>samolet</name>
         <coordinates>120 200</coordinates>
         <enginePower>3000</enginePower>
         <VehicleType>PLANE</VehicleType>
         <FuelType>MANPOWER</FuelType>
-    </myveh2>
-	<myveh3>
+    </myveh>
+	<myveh>
 		<name>traktar</name>
 		<coordinates>200 300</coordinates>
 		<enginePower>400</enginePower>
 		<VehicleType>CAR</VehicleType>
 		<FuelType>KEROSINE</FuelType>
-	</myveh3>
+	</myveh>
 </vehicles>
