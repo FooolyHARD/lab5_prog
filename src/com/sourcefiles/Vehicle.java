@@ -15,14 +15,14 @@ public class Vehicle implements Comparable<Vehicle>{
     private String name; //Поле не может быть null, Строка не может быть пустой
     @NotNull
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     @Positive(message = "Мощность двигателя должна быть больше 0")
     private float enginePower; //Значение поля должно быть больше 0
     private VehicleType type; //Поле может быть null
     @NotNull
     private FuelType fuelType; //Поле не может быть null
 
-    public Vehicle(long id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, float enginePower,VehicleType type,FuelType fuelType ){
+    public Vehicle(long id, String name, Coordinates coordinates, java.time.LocalDate creationDate, float enginePower,VehicleType type,FuelType fuelType ){
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -31,6 +31,9 @@ public class Vehicle implements Comparable<Vehicle>{
         this.type = type;
         this.fuelType = fuelType;
     }
+
+
+
     public Long getId() {
         return id;
     }
@@ -61,11 +64,11 @@ public class Vehicle implements Comparable<Vehicle>{
     public void setFuelType(FuelType fuelType) {
         this.fuelType = fuelType;
     }
-    public LocalDateTime getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
     public VehicleType getType() {

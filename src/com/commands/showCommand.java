@@ -17,7 +17,7 @@ public class showCommand extends Command {
         try {
             if (!argument.isEmpty()) throw new ArgsAmountException();
             if (collectionManager.collectionSize() == 0) throw new NullColletionEcxeption();
-            System.out.println(collectionManager.toString());
+            System.out.println(collectionManager);
             return true;
         } catch (ArgsAmountException exception) {
             ConsoleManager.printErr("Usage: '" + getName() + "'");

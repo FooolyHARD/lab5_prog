@@ -9,6 +9,7 @@ import com.exceptions.NullColletionEcxeption;
 import com.sourcefiles.Vehicle;
 import com.utils.CollectionManager;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class addIfminCommand extends Command {
@@ -29,7 +30,7 @@ public class addIfminCommand extends Command {
                     collectionManager.generateNextId(),
                     scannerManager.askPersonName(),
                     scannerManager.askCoordinates(),
-                    LocalDateTime.now(),
+                    LocalDate.now(),
                     scannerManager.askEnginePower(),
                     scannerManager.askVehicleType(),
                     scannerManager.askFuelType()

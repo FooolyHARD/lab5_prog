@@ -85,7 +85,7 @@ public class ScannerManager {
         while (true) {
             try {
                 if (withLimit)
-                    System.out.println("Enter X cooed< " + MAX_X + ":");
+                    System.out.println("Enter X coord :");
                 else
                     System.out.println("Enter X coord:");
                 System.out.print(Main.INPUT_INFO);
@@ -99,15 +99,15 @@ public class ScannerManager {
                 System.exit(0);
                 if (filemode) throw new BadScriptException();
             } catch (IncorrectLengthException exception) {
-                ConsoleManager.printErr("Cooed X must lay on (" + 0
+                ConsoleManager.printErr("Coord X must lay on (" + 0
                         + ";" + (withLimit ? MAX_X : Double.MAX_VALUE) + ")!");
                 if (filemode) throw new BadScriptException();
             } catch (NumberFormatException exception) {
                 if (patternNumber.matcher(strX).matches())
-                    ConsoleManager.printErr("Cooed X must lay on (" + Double.MAX_VALUE
+                    ConsoleManager.printErr("Coord X must lay on (" + Double.MAX_VALUE
                             + ";" + (withLimit ? MAX_X : Double.MAX_VALUE) + ")!");
                 else
-                    ConsoleManager.printErr("Cooed X must be an double");
+                    ConsoleManager.printErr("Coord X must be an double");
                 if (filemode) throw new BadScriptException();
             } catch (NullPointerException | IllegalStateException exception) {
                 ConsoleManager.printErr("Unexpected error!");
@@ -135,10 +135,10 @@ public class ScannerManager {
                 if (filemode) throw new BadScriptException();
             } catch (NumberFormatException exception) {
                 if (patternNumber.matcher(strY).matches()) //why
-                    ConsoleManager.printErr("Cooed Y must lay on (" + MIN_Y
+                    ConsoleManager.printErr("Coord Y must lay on (" + MIN_Y
                             + ";" + Integer.MAX_VALUE + ")!");
                 else
-                    ConsoleManager.printErr("Cooed X must be an int");
+                    ConsoleManager.printErr("Coord X must be an int");
                 if (filemode) throw new BadScriptException();
             } catch (NullPointerException | IllegalStateException exception) {
                 ConsoleManager.printErr("Unexpected error!");
@@ -152,7 +152,7 @@ public class ScannerManager {
     public Coordinates askCoordinates() throws BadScriptException {
         double x = askXOfCoordinates(true);
         int y = askYOfCoordinates();
-        return new Coordinates(x, y);
+        return new Coordinates();
     }
 
 

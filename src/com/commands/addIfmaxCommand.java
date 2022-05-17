@@ -10,6 +10,7 @@ import com.exceptions.NullColletionEcxeption;
 import com.sourcefiles.Vehicle;
 import com.utils.CollectionManager;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class addIfmaxCommand extends Command {
@@ -30,7 +31,7 @@ public class addIfmaxCommand extends Command {
                     collectionManager.generateNextId(),
                     scannerManager.askPersonName(),
                     scannerManager.askCoordinates(),
-                    LocalDateTime.now(),
+                    LocalDate.now(),
                     scannerManager.askEnginePower(),
                     scannerManager.askVehicleType(),
                     scannerManager.askFuelType()

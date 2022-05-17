@@ -12,6 +12,7 @@ import com.sourcefiles.Vehicle;
 import com.sourcefiles.VehicleType;
 import com.utils.CollectionManager;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class updateByIdCommand extends Command {
@@ -35,7 +36,7 @@ public class updateByIdCommand extends Command {
             if (vehicle == null) throw new VehicleIsNullException();
             String name = vehicle.getName();
             Coordinates coordinates = vehicle.getCoordinates();
-            LocalDateTime creationDate = vehicle.getCreationDate();
+            LocalDate creationDate = vehicle.getCreationDate();
             float enginePower = vehicle.getEnginePower();
             VehicleType type = vehicle.getType();
             FuelType fuelType = vehicle.getFuelType();

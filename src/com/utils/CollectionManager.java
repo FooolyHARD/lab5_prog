@@ -124,7 +124,7 @@ public class CollectionManager {
     public String toString() {
         if (VehicleCollection.isEmpty()) return "Colletion is empty!";
         StringBuilder info = new StringBuilder();
-        System.out.println(VehicleCollection.get(0));
+        //System.out.println(VehicleCollection.get(0));
         for (Vehicle vehicle : VehicleCollection) {
             info.append(vehicle.toString());
             if (vehicle != VehicleCollection.getLast()) {

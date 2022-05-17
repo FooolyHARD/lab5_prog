@@ -2,6 +2,8 @@ package com.utils;
 
 import com.IO.ConsoleManager;
 
+import com.parseXML.ReadXmlDomParser;
+import com.parseXML.WriteXmlDomParser;
 import com.sourcefiles.Vehicle;
 import sun.awt.image.ImageWatched;
 
@@ -28,19 +30,9 @@ public class FileManager {
                 File file = new File(fileName);
                 if (!file.canRead() || !file.canWrite())
                     throw new IOException();
-
-                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
-                JAXBContext context = JAXBContext.newInstance(Vehicle.class);
-                Marshaller mr = context.createMarshaller();
-
-                mr.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-                for (Vehicle v: vehicleCollection){
-                    mr.marshal(v, writer);
-                    writer.flush();
-                }
-                writer.close();
+                WriteXmlDomParser.write(vehicleCollection, fileName);
             }
-        } catch (IOException | JAXBException e) {
+        } catch (IOException e) {
             ConsoleManager.printErr("No access to file");
             System.exit(0);
         }
@@ -53,14 +45,13 @@ public class FileManager {
                 File file = new File(fileName);
                 if (!file.canRead() || !file.canWrite())
                     throw new IOException();
-                JAXBContext context = JAXBContext.newInstance(Vehicle.class);
-                Unmarshaller um = context.createUnmarshaller();
-
+                //System.out.println(ReadXmlDomParser.read(fileName));
+            return ReadXmlDomParser.read(fileName);
             }
-        } catch (IOException | JAXBException e) {
+        } catch (IOException e) {
             ConsoleManager.printErr("No access to file");
             System.out.println(e);
-            //System.exit(0);
+            System.exit(0);
         }
         return new LinkedList<>();
     }

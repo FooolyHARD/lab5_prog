@@ -3,13 +3,11 @@ package com;
 import com.IO.ConsoleManager;
 import com.IO.ScannerManager;
 import com.commands.*;
-import com.parseXML.XMLParser;
 import com.utils.Chronicler;
 import com.utils.CollectionManager;
 import com.utils.CommandManager;
 import com.utils.FileManager;
 
-import javax.xml.bind.JAXBException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         try (Scanner userScanner = new Scanner(System.in)) {
             Chronicler chronicler = new Chronicler();
-            String fileName = "MyVehicles.xml";
+            String fileName = "/home/shizlong/programming/Java/lab5_prog/MyVehicles.xml";
             ScannerManager scannerManager = new ScannerManager(userScanner);
             FileManager fileManager = new FileManager(fileName);
             CollectionManager collectionManager = new CollectionManager(fileManager);
